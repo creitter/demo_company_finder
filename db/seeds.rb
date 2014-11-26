@@ -14,3 +14,4 @@ puts "All Contacts clearded"
 
 company = Company.create(name: "My Big Company", size: 10, year: 2000, industry: "internet", revenue: 2000000)
 contact = Contact.create(name: "Dave Brown", email: "dave.brown@mybigcompany.com", phone: "4085551212", company: company)
+contact = Contact.create(name: "Susanne Somers", email: "susy@mybigcompany.com", phone: "4083451212", company: company)

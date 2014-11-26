@@ -27,6 +27,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     respond_to do |format|
+      
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
@@ -41,6 +42,13 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
+      
+      # Update contact info
+      params[:company][:contacts_attributes].each { |index, contact|
+        @contact = Contact.find_by_id(contact[:id])
+        @contact.update_attributes!(name: contact[:name], email: contact[:email], phone: contact[:phone])
+      }
+      
       if @company.update(company_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }

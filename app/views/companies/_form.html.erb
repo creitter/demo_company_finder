@@ -31,6 +31,17 @@
     <%= f.label :revenue %><br>
     <%= f.text_field :revenue %>
   </div>
+
+  <%= f.fields_for :contacts do |contact_fields| %>
+    <div class="field">
+      Name: <%= contact_fields.text_field :name %>
+      Email: <%= contact_fields.text_field :email %>
+      Phone: <%= contact_fields.text_field :phone %>
+    </div>
+  <% end %>
+
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>
