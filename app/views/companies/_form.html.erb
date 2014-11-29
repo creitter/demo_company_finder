@@ -32,15 +32,27 @@
     <%= f.text_field :revenue %>
   </div>
 
-  <%= f.fields_for :contacts do |contact_fields| %>
-    <div class="field">
-      Name: <%= contact_fields.text_field :name %>
-      Email: <%= contact_fields.text_field :email %>
-      Phone: <%= contact_fields.text_field :phone %>
-    </div>
-  <% end %>
-
-
+  <div id="contact_list">
+    <%= f.fields_for :contacts do |contact_fields| %>
+      <div class="field contact">
+        Name: <%= contact_fields.text_field :name %>
+        Email: <%= contact_fields.text_field :email %>
+        Phone: <%= contact_fields.text_field :phone %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="field new_contact">
+    <%= f.fields_for :contact do |contact_form| %>
+      <%= contact_form.label :name %>:
+      <%= contact_form.text_field :name %>
+      <%= contact_form.label :email %>:
+      <%= contact_form.text_field :email %>
+      <%= contact_form.label :phone %>:
+      <%= contact_form.text_field :phone %>
+      <%= contact_form.button :Add, {id: "add_contact"} %>
+    <% end %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
