@@ -1,0 +1,25 @@
+<div>
+  <%= link_to "Show all Companies", companies_path %>
+</div>
+
+<div id="search-form">
+  <%= form_tag search_path, method: :post do %>
+    <div class="field">
+      <%= label_tag(:company_name, "Company Name:") %>
+      <%= text_field_tag(:company_name) %>
+    </div>
+    <div class="field">
+      <%= label_tag(:industry, "Industry:") %>
+      <%= text_field_tag(:industry) %>
+    </div>  
+    
+    <%= submit_tag("Search") %>
+  <% end %>
+  
+  <% @results.each do |item| %>
+    <%= item.name %> 
+    <br>
+  <% end  %>
+  
+  
+</div>
